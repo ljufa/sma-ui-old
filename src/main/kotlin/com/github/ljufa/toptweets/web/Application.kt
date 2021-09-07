@@ -1,6 +1,6 @@
 package com.github.ljufa.toptweets.web
 
-import com.github.ljufa.toptweets.grpc.TopTweetsRequest
+import com.github.ljufa.toptweets.server.grpc.TopTweetsRequest
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install

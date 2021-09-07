@@ -1,7 +1,7 @@
 syntax = "proto3";
 import "google/protobuf/empty.proto";
 
-package com.github.ljufa.toptweets.grpc;
+package com.github.ljufa.toptweets.server.grpc;
 
 option java_multiple_files = true;
 
