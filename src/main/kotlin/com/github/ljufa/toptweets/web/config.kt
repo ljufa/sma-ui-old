@@ -1,4 +1,4 @@
-package com.github.ljufa.toptweets
+package com.github.ljufa.toptweets.web
 
 import com.sksamuel.hoplite.*
 

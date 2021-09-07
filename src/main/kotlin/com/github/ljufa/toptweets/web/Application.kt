@@ -1,4 +1,4 @@
-package com.github.ljufa.toptweets
+package com.github.ljufa.toptweets.web
 
 import com.github.ljufa.toptweets.grpc.TopTweetsRequest
 import io.ktor.application.Application
@@ -20,7 +20,6 @@ import io.ktor.util.date.GMTDate
 import io.ktor.websocket.webSocket
 import kotlinx.css.CSSBuilder
 import kotlinx.html.*
-import java.io.File
 import java.time.Duration
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
