@@ -1,7 +1,6 @@
 package com.github.ljufa.toptweets.web
 
-import com.github.ljufa.toptweets.grpc.*
-import com.github.ljufa.toptweets.web.config
+import com.github.ljufa.toptweets.server.grpc.*
 import com.google.protobuf.Empty
 import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder
@@ -48,13 +47,11 @@ class TwitterApiGrpcClient : Closeable {
     }
 
     fun getHashTags(daysFromNow: Int): HashTags = runBlocking {
-//        stub.getHashTags(ByRuleRequest.newBuilder().setDaysFromNow(daysFromNow).setRuleId("").build())
-        HashTags.getDefaultInstance()
+        stub.getHashTags(ByRuleRequest.newBuilder().setDaysFromNow(daysFromNow).setRuleId("").build())
     }
 
     fun getUserMentions(daysFromNow: Int): UserMentions = runBlocking {
-//        stub.getUserMentions(ByRuleRequest.newBuilder().setDaysFromNow(daysFromNow).setRuleId("").build())
-        UserMentions.getDefaultInstance()
+        stub.getUserMentions(ByRuleRequest.newBuilder().setDaysFromNow(daysFromNow).setRuleId("").build())
     }
 
     override fun close() {

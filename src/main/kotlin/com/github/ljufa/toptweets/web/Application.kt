@@ -1,6 +1,6 @@
 package com.github.ljufa.toptweets.web
 
-import com.github.ljufa.toptweets.grpc.TopTweetsRequest
+import com.github.ljufa.toptweets.server.grpc.TopTweetsRequest
 import io.ktor.application.Application
 import io.ktor.application.call
 import io.ktor.application.install
@@ -84,7 +84,7 @@ fun Application.module(testing: Boolean = false) {
             val lang = params["lang"]
             val rules = params["rule"]
             val limit = params["limit"]?.toInt() ?: 9
-            val reqBuilder = TopTweetsRequest.newBuilder().setLimit(limit).setDaysFromNow(days)
+            val reqBuilder = TopTweetsRequest.newBuilder().setLimit(limit).setDaysFromNow(days).setExcludePossiblySensitive(true)
             lang?.split(",")?.forEach { reqBuilder.addIncludeLanguages(it) }
             rules?.split(",")?.forEach { reqBuilder.addIncludeRuleIds(it) }
             val languages =

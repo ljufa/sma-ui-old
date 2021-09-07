@@ -1,7 +1,7 @@
 syntax = "proto3";
 import "google/protobuf/empty.proto";
 
-package com.github.ljufa.toptweets.grpc;
+package com.github.ljufa.toptweets.server.grpc;
 
 option java_multiple_files = true;
 
@@ -84,6 +84,7 @@ message TopTweetsRequest {
   repeated string excludePlaces = 7;
   repeated string excludeLanguages = 8;
   repeated string excludeAuthors = 9;
+  bool excludePossiblySensitive = 10;
 }
 
 message TopTweetsResponse {
