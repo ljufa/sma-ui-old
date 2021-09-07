@@ -1,0 +1,135 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+package com.github.ljufa.toptweets.grpc;
+
+option java_multiple_files = true;
+
+service TopTweets {
+  rpc GetTopTweets (TopTweetsRequest) returns (TopTweetsResponse);
+}
+
+service TwitterApi {
+  rpc GetMatchedRules (google.protobuf.Empty) returns (MatchedRules);
+  rpc GetLanguages (ByRuleRequest) returns (Languages);
+  rpc GetHashTags (ByRuleRequest) returns (HashTags);
+  rpc GetUserMentions(ByRuleRequest) returns (UserMentions);
+  rpc GetAuthors(ByRuleRequest) returns (Authors);
+}
+/// DTO model
+message Authors{
+  repeated Author author = 1;
+}
+message Author{
+  string id = 1;
+  string username = 2;
+  uint32 numberOfMatches = 3;
+}
+message UserMentions{
+  repeated UserMention userMention = 1;
+}
+
+message UserMention{
+  string user = 1;
+  uint32 numberOfMatches = 2;
+  string ruleId = 3;
+  string lang = 4;
+
+}
+
+message HashTags{
+  repeated HashTag hashtag = 1;
+}
+
+message HashTag{
+  string tag = 1;
+  uint32 numberOfMatches = 2;
+  string ruleId = 3;
+  string lang = 4;
+}
+
+message Languages{
+  repeated Language language = 1;
+}
+
+message Language {
+  string id = 1;
+  string label = 2;
+  uint32 numberOfMatches = 3;
+  string ruleId = 4;
+}
+
+message ByRuleRequest{
+  uint32 daysFromNow = 1;
+  string ruleId = 2;
+}
+
+message MatchedRules {
+  repeated Rule rule = 1;
+}
+
+message Rule {
+  string id = 1;
+  string tag = 2;
+  uint32 numberOfMatches = 3;
+}
+
+message TopTweetsRequest {
+  repeated string includeRuleIds = 1;
+  repeated string includeLanguages = 2;
+  uint32 daysFromNow = 3;
+  uint32 limit = 4;
+  repeated string excludeUserMentions = 5;
+  repeated string excludeHashTags = 6;
+  repeated string excludePlaces = 7;
+  repeated string excludeLanguages = 8;
+  repeated string excludeAuthors = 9;
+}
+
+message TopTweetsResponse {
+  repeated TweetStat stats = 1;
+}
+
+message TweetStat {
+  string tweetId = 1;
+  uint64 numberOfRefs = 2;
+}
+
+// database model
+message TweetRecord {
+  string messageId = 1;
+  string tweetId = 2;
+  string createdAt = 3;
+  string lang = 4;
+  string text = 5;
+  string author = 6;
+  repeated TweetReferenceVO ref = 7;
+  repeated MatchedRuleVO matchedRule = 8;
+  repeated HashtagVO hashtags = 9;
+  repeated UserMentionVO userMentions = 10;
+  repeated UrlVO urls = 11;
+}
+message MatchedRuleVO {
+  string id = 1;
+  string tag = 2;
+}
+message HashtagVO {
+  string id = 1;
+  string tag = 2;
+}
+message UserMentionVO {
+  string id = 1;
+  string username = 2;
+}
+message UrlVO {
+  string id = 1;
+  string url = 2;
+  string title = 3;
+  string displayUrl = 4;
+  string expandedUrl = 5;
+}
+message TweetReferenceVO {
+  string id = 1;
+  string refId = 2;
+  string type = 3;
+}

@@ -1,0 +1,3 @@
+grpcServer:
+  url: top-tweets-backend:1977
+  isSsl: false
