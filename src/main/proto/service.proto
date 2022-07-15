@@ -1,7 +1,7 @@
 syntax = "proto3";
 import "google/protobuf/empty.proto";
 
-package com.github.ljufa.toptweets.server.grpc;
+package com.github.ljufa.sma.tw.server.grpc;
 
 option java_multiple_files = true;
 
@@ -34,7 +34,6 @@ message UserMention{
   uint32 numberOfMatches = 2;
   string ruleId = 3;
   string lang = 4;
-
 }
 
 message HashTags{
@@ -109,6 +108,7 @@ message TweetRecord {
   repeated HashtagVO hashtags = 9;
   repeated UserMentionVO userMentions = 10;
   repeated UrlVO urls = 11;
+  string possiblySensitive = 12;
 }
 message MatchedRuleVO {
   string id = 1;

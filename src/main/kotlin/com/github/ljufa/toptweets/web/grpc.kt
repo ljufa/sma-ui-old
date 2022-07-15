@@ -1,6 +1,6 @@
 package com.github.ljufa.toptweets.web
 
-import com.github.ljufa.toptweets.server.grpc.*
+import com.github.ljufa.sma.tw.server.grpc.*
 import com.google.protobuf.Empty
 import io.grpc.ManagedChannel
 import io.grpc.ManagedChannelBuilder

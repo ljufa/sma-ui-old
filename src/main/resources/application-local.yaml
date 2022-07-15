@@ -1,3 +1,3 @@
 grpcServer:
-  url: localhost:1977
-  isSsl: false
+  url: sma.data.dlj.freemyip.com
+  isSsl: true
